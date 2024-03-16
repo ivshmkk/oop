@@ -16,6 +16,9 @@ class Student:
         else:
             return 'Ошибка'
 
+    def __str__(self):
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {round(sum(self.grades.values()) / len(self.grades), 2)}\nКурсы в процессе обучения: {", ".join(self.courses_in_progress)}\nЗавершенные курсы: {", ".join(self.finished_courses)}'
+
 
 class Mentor:
     def __init__(self, name, surname):
@@ -28,6 +31,9 @@ class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.grades = {}
+
+    def __str__(self):
+        return f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {round(sum(self.grades.values()) / len(self.grades), 2)}'
 
 
 class Reviewer(Mentor):
@@ -56,3 +62,4 @@ some_reviewer.rate_hw(best_student, 'Python', 10)
 
 print(best_student.grades)
 print(some_reviewer)
+print(best_student)
